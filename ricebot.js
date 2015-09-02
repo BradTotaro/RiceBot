@@ -1,5 +1,6 @@
 if(!db){var db=[];}
-subject=location.href.split("/").pop();
+subject=location.href.split("/");
+subject.pop();
 subject=subject.join("/");
 
 

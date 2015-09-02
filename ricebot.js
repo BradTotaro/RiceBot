@@ -1,4 +1,7 @@
 if(!db){var db=[];}
+subject=location.href.split("/").pop();
+subject=subject.join("/");
+
 
 function check(){
 if(answer=db[location.href.split("/").pop()] ){
@@ -16,7 +19,16 @@ function mainLoop () {
 		mainLoop();                             
    }, 2000)
 }
-mainLoop(); 
+function mathLoop () {
+   setTimeout(function () {
+        numbers=$(".question-link").text().split("x");
+	result= parseInt(numbers[0])*parseInt(numbers[1]);
+        answer=$("a").filter(function() {return $(this).text() == result;}).attr('rel')
+	ExternalGame.submitAnswer(answer);	   
+        mainLoop();                           
+   }, 2000)
+}
+
 	
 ca="";
 na="";nb="";
@@ -38,3 +50,9 @@ window.open(encodedUri);
 });
 
 
+if(subject=="http://freerice.com/#/multiplication-table/")
+{
+mathLoop();
+}else{
+mainLoop();
+}

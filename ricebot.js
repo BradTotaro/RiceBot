@@ -26,7 +26,7 @@ function mathLoop () {
 	result= parseInt(numbers[0])*parseInt(numbers[1]);
         answer=$("a").filter(function() {return $(this).text() == result;}).attr('rel')
 	ExternalGame.submitAnswer(answer);	   
-        mainLoop();                           
+        mathLoop();                           
    }, 2000)
 }
 
@@ -51,9 +51,11 @@ window.open(encodedUri);
 });
 
 
-if(subject=="http://freerice.com/#/multiplication-table/")
+if(subject=="http://freerice.com/#/multiplication-table")
 {
+console.log("Math")
 mathLoop();
 }else{
+console.log("Database")
 mainLoop();
 }

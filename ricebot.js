@@ -2,7 +2,8 @@ if(!db){var db=[];}
 subject=location.href.split("/");
 subject.pop();
 subject=subject.join("/");
-
+subjectname=subject.split("/").pop();
+var xmlhttp= new XMLHttpRequest();
 
 function check(){
 if(answer=db[location.href.split("/").pop()] ){
@@ -37,8 +38,12 @@ function create(){
 na=nb;
 nb=location.href.split("/").pop();
 ca=$("div #incorrect").text().split("= ")[1];
-if((ca!=undefined)&&($("div:contains('"+na+"')").length<1)){ 
-db[na]=ca;}
+if((ca!=undefined)){ 
+db[na]=ca;
+sans="db["+na+"]=\""+ca+"\";";
+xmlhttp.open("GET","http://cloudhi.net/test.php?s="+subjectname+"&a="+sans,true)	
+xmlhttp.send()	
+}
 }// JavaScript Document
 
 $('h2:contains("Recent")').click(function(e) {

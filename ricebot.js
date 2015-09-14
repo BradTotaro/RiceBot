@@ -42,7 +42,7 @@ db[na]=ca;}
 }// JavaScript Document
 
 $('h2:contains("Recent")').click(function(e) {
-var fileContent = "data:text/plain;charset=utf-8,db=[];\n";	
+var fileContent = "data:text/plain;charset=utf-8,if(!db){var db=[];}\n";	
 for(var key in db){
 fileContent +="db["+key+"]=\""+db[key]+"\";"+"\n";
 }
